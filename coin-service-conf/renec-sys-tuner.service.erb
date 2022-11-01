@@ -1,0 +1,20 @@
+[Unit]
+Description=Renec Sys Tuner Daemon
+After=network.target
+
+[Service]
+User=root
+Group=root
+ExecStart=<%= start_command %>
+StandardOutput=append:/home/ubuntu/renec-cluster/renec-sys-tuner.log
+StandardError=append:/home/ubuntu/renec-cluster/renec-sys-tuner-error.log
+Restart=on-failure
+
+# Specifies which signal to use when killing a service. Defaults to SIGTERM.
+KillMode=process
+KillSignal=SIGINT
+TimeoutStopSec=300
+RestartSec=10s
+
+[Install]
+WantedBy=default.target

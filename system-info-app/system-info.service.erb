@@ -1,0 +1,19 @@
+[Unit]
+Description=Sinatra app providing host info
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+ExecStart=<%= start_command %>
+Restart=on-failure
+
+# Specifies which signal to use when killing a service. Defaults to SIGTERM.
+# SIGINT gives geth time to exit cleanly before SIGKILL (default 90s, changed to 300s)
+KillMode=process
+KillSignal=SIGINT
+TimeoutStopSec=300
+RestartSec=10s
+
+[Install]
+WantedBy=default.target

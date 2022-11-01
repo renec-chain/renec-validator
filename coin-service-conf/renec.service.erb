@@ -1,0 +1,22 @@
+[Unit]
+Description=Renec Daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+Environment=SOLANA_METRICS_CONFIG=host=http://metrics.renec.foundation:8086,db=mainnet-beta,u=write,p=39018931781680558
+Environment=RUST_LOG=info
+ExecStart=<%= start_command %>
+StandardOutput=append:/home/ubuntu/renec-cluster/renec-validator.log
+StandardError=append:/home/ubuntu/renec-cluster/renec-validator-error.log
+Restart=on-failure
+
+# Specifies which signal to use when killing a service. Defaults to SIGTERM.
+KillMode=process
+KillSignal=SIGINT
+TimeoutStopSec=300
+RestartSec=10s
+
+[Install]
+WantedBy=default.target

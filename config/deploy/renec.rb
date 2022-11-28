@@ -3,8 +3,10 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
+# You need to change this to your server IP
 server "3.22.98.114", user: "ubuntu", roles: %w{primary}
 
+# You need to change this to your server IP
 set :server_ip, "3.22.98.114"
 
 set :data_full_path, "/home/ubuntu/renec-cluster"
@@ -14,8 +16,8 @@ namespace :deploy do
   after :finishing, :install_all do
     on roles(:primary) do |host|
       within current_path do
-        install_nvme
         install_renec_tool_suite
+        generate_keypairs
         create_renec_service
         create_renec_sys_tuner_service
         restart_renec_sys_tuner
@@ -31,6 +33,16 @@ def install_renec_tool_suite
 
   return puts("Renec installed") if test("[ -d /home/ubuntu/.config/renec ]")
   execute "sed -i '1 i\\export PATH=\"/home/ubuntu/.local/share/renec/install/active_release/bin:$PATH\"' /home/ubuntu/.bashrc"
+end
+
+def generate_keypairs
+  execute :mkdir, "mkdir -p #{fetch(:data_full_path)}"
+  return puts("Keypairs existed") if test("[ -d #{fetch(:data_full_path)}/keypairs ]")
+
+  execute "/home/ubuntu/.local/share/renec/install/active_release/bin/renec-keygen new --no-passphrase --outfile #{fetch(:data_full_path)}/keypairs/validator-identity.json"
+  execute "/home/ubuntu/.local/share/renec/install/active_release/bin/renec-keygen new --no-passphrase --outfile #{fetch(:data_full_path)}/keypairs/validator-vote-account.json"
+  execute "/home/ubuntu/.local/share/renec/install/active_release/bin/renec-keygen new --no-passphrase --outfile #{fetch(:data_full_path)}/keypairs/validator-stake-account.json"
+  execute "/home/ubuntu/.local/share/renec/install/active_release/bin/renec-keygen new --no-passphrase --outfile #{fetch(:data_full_path)}/keypairs/validator-withdrawer.json"
 end
 
 def install_nvme
@@ -72,7 +84,6 @@ end
 def start_renec_validator_command
   # Do not pass the --no-snapshot-fetch parameter on your initial boot as it's not possible to boot the node all the way
   # from the genesis block. Instead boot from a snapshot first and then add the --no-snapshot-fetch parameter for reboots.
-  first_start = !test("[ -d #{fetch(:data_full_path)}/snapshot/ ]")
   "/home/ubuntu/.local/share/renec/install/active_release/bin/renec-validator \
     --identity #{fetch(:data_full_path)}/keypairs/validator-identity.json \
     --vote-account #{fetch(:data_full_path)}/keypairs/validator-vote-account.json \
@@ -93,7 +104,7 @@ def start_renec_validator_command
     --incremental-snapshots \
     --account-index program-id \
     --account-index spl-token-owner \
-    --account-index spl-token-mint #{first_start ? "" : "--no-snapshot-fetch"}"
+    --account-index spl-token-mint"
 end
 
 def start_renec_validator

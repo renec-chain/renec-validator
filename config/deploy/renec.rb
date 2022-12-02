@@ -102,6 +102,7 @@ def start_renec_validator_command
     --expected-genesis-hash 7PNFRHLxT9FcAxSUcg3P8BraJnnUBnjuy8LwRbRJvVkX \
     --full-rpc-api \
     --incremental-snapshots \
+    --limit-ledger-size 200000000 \
     --account-index program-id \
     --account-index spl-token-owner \
     --account-index spl-token-mint"

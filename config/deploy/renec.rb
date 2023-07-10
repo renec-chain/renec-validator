@@ -22,6 +22,7 @@ namespace :deploy do
         create_renec_sys_tuner_service
         restart_renec_sys_tuner
         start_renec_validator
+        setup_log_rotate
       end
     end
   end
@@ -106,6 +107,20 @@ def start_renec_validator_command
     --account-index program-id \
     --account-index spl-token-owner \
     --account-index spl-token-mint"
+end
+
+def renec_log_rotate_config
+  template_path = File.expand_path("../../../coin-conf/log-rotate.erb", __FILE__)
+  template = ERB.new(File.read(template_path))
+  namespace = OpenStruct.new(
+    data_path: fetch(:data_full_path)
+  )
+  template.result(namespace.instance_eval { binding })
+end
+
+def setup_log_rotate
+  upload! StringIO.new(renec_log_rotate_config), "#{current_path}/log-rotate"
+  execute :sudo, "cp #{current_path}/log-rotate /etc/logrotate.d/renec"
 end
 
 def start_renec_validator

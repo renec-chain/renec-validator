@@ -4,10 +4,10 @@
 # You can define all roles on a single server, or split them:
 
 # You need to change this to your server IP
-server "3.22.98.114", user: "ubuntu", roles: %w{primary}
+server "113.161.31.209", user: "ubuntu", roles: %w{primary}
 
 # You need to change this to your server IP
-set :server_ip, "3.22.98.114"
+set :server_ip, "113.161.31.209"
 
 set :data_full_path, "/home/ubuntu/renec-cluster"
 set :renec_version, "1.9.29"

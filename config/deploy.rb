@@ -4,8 +4,9 @@ lock "~> 3.11.0"
 set :application, "renec-validator"
 set :repo_url, "https://github.com/ngocbv/renec-validator.git"
 set :branch, "master"
-set :deploy_to, "/home/ubuntu/#{fetch(:application)}"
-set :ssh_options, { auth_methods: ["publickey"], forward_agent: true, user: "ubuntu", keys: %w(~/.ssh/ngocbv-renec.pem) }
+set :username, "ubuntu"
+set :deploy_to, "/home/#{fetch(:username)}/#{fetch(:application)}"
+# set :ssh_options, { auth_methods: ["publickey"], forward_agent: true, user: fetch(:username), keys: %w(~/.ssh/ngocbv-renec.pem) }
 
 require "erb"
 

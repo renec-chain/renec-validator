@@ -1,14 +1,13 @@
 [Unit]
-Description=Renec Sys Tuner Daemon
+Description=Node Exporter
 After=network.target
 
 [Service]
 User=root
 Group=root
-LimitNOFILE=1000000
-ExecStart=<%= start_command %>
-StandardOutput=append:/home/ubuntu/renec-cluster/renec-sys-tuner.log
-StandardError=append:/home/ubuntu/renec-cluster/renec-sys-tuner-error.log
+ExecStart=/home/ubuntu/node-exporter/node_exporter
+StandardOutput=append:/home/ubuntu/node-exporter/exporter.log
+StandardError=append:/home/ubuntu/node-exporter/exporter-error.log
 Restart=on-failure
 
 # Specifies which signal to use when killing a service. Defaults to SIGTERM.

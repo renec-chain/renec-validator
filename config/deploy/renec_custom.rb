@@ -4,45 +4,58 @@
 # You can define all roles on a single server, or split them:
 
 # mainnet-beta
-# server "34.230.188.212", user: "ubuntu", roles: %w{primary} #renec-mainnet1
-# server "100.24.94.131", user: "ubuntu", roles: %w{primary} #renec-mainnet2
-# server "34.224.180.54", user: "ubuntu", roles: %w{primary} #renec-mainnet3
-# server "44.218.89.139", user: "ubuntu", roles: %w{primary} #renec-mainnet4
-#
-#
-# server "34.229.163.107", user: "ubuntu", roles: %w{primary} #renec-mainnet1
-# server "54.80.152.114", user: "ubuntu", roles: %w{primary} #renec-mainnet2
-# server "3.224.210.94", user: "ubuntu", roles: %w{primary} #renec-mainnet3
-# server "3.217.89.253", user: "ubuntu", roles: %w{primary} #renec-mainnet4
-# server "52.206.243.123", user: "ubuntu", roles: %w{primary} #renec-mainnet5
-# server "3.227.143.19", user: "ubuntu", roles: %w{primary} #renec-mainnet6
+# server "54.85.162.144", user: "ubuntu", roles: %w{primary} #renec-mainnet1
+# server "34.233.73.163", user: "ubuntu", roles: %w{primary} #renec-mainnet2
+# server "35.153.157.168", user: "ubuntu", roles: %w{primary} #renec-mainnet2-alter
+# server "35.169.187.80", user: "ubuntu", roles: %w{primary} #renec-mainnet3
+# server "52.6.207.113", user: "ubuntu", roles: %w{primary} #renec-mainnet4
+# server "34.233.115.222", user: "ubuntu", roles: %w{primary} #renec-mainnet5
+# server "52.21.244.146", user: "ubuntu", roles: %w{primary} #renec-mainnet6
 # server "34.228.32.217", user: "ubuntu", roles: %w{primary} #renec-onus
 # server "18.234.202.94", user: "ubuntu", roles: %w{primary} #renec-mainnet1-new
-# server "54.205.103.245", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc-bigtable
-# server "3.209.79.67", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc-bigtable-backup
-# server "3.219.158.133", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc3
-# server "54.205.103.245", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc4
-# server "125.212.234.28", user: "ubuntu", roles: %w{primary} # rpc viettel idc
-# server "18.209.222.21", user: "ubuntu", roles: %w{primary} # warehouse
-# server "3.82.238.67", user: "ubuntu", roles: %w{primary} # metrics
-# server "18.143.240.52", user: "ubuntu", roles: %w{primary} # oracle1
-# server "47.129.21.11", user: "ubuntu", roles: %w{primary} # oracle2
+# server "54.234.255.164", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc1
+# server "3.225.23.57", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc2
+# server "3.214.105.219", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc2-copy
+# server "44.216.130.82", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc3
+# server "3.219.158.133", user: "ubuntu", roles: %w{primary} #renec-mainnet-rpc3-copy
+# server "125.212.234.28", user: "ubuntu", roles: %w{primary} # viettel idc rpc1
 
 # testnet
-# server "54.92.219.117", user: "ubuntu", roles: %w{primary} #renec-testnet
-# server "54.164.58.118", user: "ubuntu", roles: %w{primary} #renec-testnet2
-server "54.221.33.66", user: "ubuntu", roles: %w{primary} #renec-testnet-alter
+# server "54.82.166.148", user: "ubuntu", roles: %w{primary} #renec-testnet1
+# server "54.226.82.237", user: "ubuntu", roles: %w{primary} #renec-testnet2
+# server "100.26.51.186", user: "ubuntu", roles: %w{primary} #renec-testnet3
+# server "3.80.218.85", user: "ubuntu", roles: %w{primary} #renec-testnet4
+# server "34.235.153.226", user: "ubuntu", roles: %w{primary} #renec-testnet5
+# server "52.91.31.100", user: "ubuntu", roles: %w{primary} #renec-testnet6
 
 # devnet
 # server "34.233.60.216", user: "ubuntu", roles: %w{primary} #renec-devnet1
-# server "3.80.214.197", user: "ubuntu", roles: %w{primary} #renec-devnet2
+# server "34.226.159.53", user: "ubuntu", roles: %w{primary} #renec-devnet2
+# server "3.208.204.38", user: "ubuntu", roles: %w{primary} #renec-devnet3
+# server "34.231.96.7", user: "ubuntu", roles: %w{primary} #renec-devnet4
+# server "44.216.137.217", user: "ubuntu", roles: %w{primary} #renec-devnet5
+# server "3.234.33.13", user: "ubuntu", roles: %w{primary} #renec-devnet6
+# server "54.172.50.90", user: "ubuntu", roles: %w{primary} #renec-devnet7
 
+# own validator
+# server "3.222.98.114", user: "ubuntu", roles: %w{primary}
+# server "54.91.199.153", user: "ubuntu", roles: %w{primary}
+# server "34.16.149.138", user: "ngocbach", roles: %w{primary} # google console
+# server "104.197.81.139", user: "ngocbach", roles: %w{primary} # google console 2
+# server "34.42.168.120", user: "ngocbach", roles: %w{primary} # google console 3
+server "171.244.62.233", user: "root", roles: %w{primary} # viettel idc
+
+# set :username, "root"
 set :home_path, "/home/ubuntu"
+set :home_path, "/root"
 set :data_full_path, "#{fetch(:home_path)}/renec-cluster"
 
-set :renec_version, "1.14.17"
+# set :renec_version, "1.9.29"
+# set :renec_version, "1.10.41"
+set :renec_version, "1.13.6"
 set :is_testnet, true
 set :is_devnet, false
+# set :is_devnet, true
 
 namespace :deploy do
   after :finishing, :install_all do
@@ -55,27 +68,9 @@ namespace :deploy do
         restart_renec_sys_tuner
         start_renec_validator
         setup_log_rotate
-        setup_prometheus
-        create_node_exporter_service
-        create_prometheus_service("Testnet")
       end
     end
   end
-end
-
-def setup_prometheus
-  # execute "wget https://github.com/prometheus/prometheus/releases/download/v2.51.0/prometheus-2.51.0.linux-amd64.tar.gz"
-  # execute "tar xvfz prometheus-2.51.0.linux-amd64.tar.gz"
-  # execute "mv prometheus-2.51.0.linux-amd64 prometheus"
-  # execute "wget https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-amd64.tar.gz"
-  # execute "tar xvfz node_exporter-1.7.0.linux-amd64.tar.gz"
-  # execute "mv node_exporter-1.7.0.linux-amd64 node-exporter"
-  execute "wget https://github.com/prometheus/prometheus/releases/download/v2.51.0/prometheus-2.51.0.linux-arm64.tar.gz"
-  execute "tar xvfz prometheus-2.51.0.linux-arm64.tar.gz"
-  execute "mv prometheus-2.51.0.linux-arm64 prometheus"
-  execute "wget https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-arm64.tar.gz"
-  execute "tar xvfz node_exporter-1.7.0.linux-arm64.tar.gz"
-  execute "mv node_exporter-1.7.0.linux-arm64 node-exporter"
 end
 
 def install_renec_tool_suite
@@ -157,8 +152,8 @@ def start_renec_validator_command_for_testnet(hostname)
     --enable-rpc-transaction-history \
     --enable-cpi-and-log-storage \
     --dynamic-port-range 8000-8020 \
-    --entrypoint 50.19.122.56:8001 \
-    --expected-genesis-hash AgkLi5XY3rd2zbKDTrBbVA45fwgn3CQreeqPnGyuYqKf \
+    --entrypoint 54.91.211.214:8001 \
+    --expected-genesis-hash G6N6ysX2TBZyXLAaCFwTTRcizxq2L5dJinKb6WQLkF8W \
     --full-rpc-api \
     --incremental-snapshots \
     --limit-ledger-size 50000000 \
@@ -195,11 +190,11 @@ def start_renec_validator_command(hostname)
   "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec-validator \
     --identity #{fetch(:data_full_path)}/keypairs/validator-identity.json \
     --vote-account #{fetch(:data_full_path)}/keypairs/validator-vote-account.json \
+    --known-validator 8eHFrtkeZ7dAjRKWN9m9Y8k8f8GbVu4goytXjTKRCSc6 \
+    --known-validator 3WsvssMpgNezCGLBQrS6Eb9ostA8AAvTtdnqNyvQQaxH \
     --known-validator 7pgxXXsnZoCLAwXn3kvVrvskmc2keULrJQ3i7iaGEiLE \
     --known-validator j2Udo3QHvbpB44RD7NSYKZhWL8SVuZXzVwbQ6KFnHDa \
     --known-validator 8zmnqf8e1eDX51adYyomxvBWn7bk8bzFb1yBW8m1yqFC \
-    --known-validator 3WsvssMpgNezCGLBQrS6Eb9ostA8AAvTtdnqNyvQQaxH \
-    --known-validator 8eHFrtkeZ7dAjRKWN9m9Y8k8f8GbVu4goytXjTKRCSc6 \
     --only-known-rpc \
     --ledger #{fetch(:data_full_path)}/ledger \
     --tpu-coalesce-ms 50 \
@@ -208,19 +203,20 @@ def start_renec_validator_command(hostname)
     --rpc-port 8888 \
     --enable-rpc-transaction-history \
     --enable-cpi-and-log-storage \
+    --require-tower \
     --dynamic-port-range 8000-8020 \
     --entrypoint entrypoint1-mainnet-beta.renec.foundation:8001 \
+    --entrypoint 35.169.187.80:8001 \
     --entrypoint entrypoint2-mainnet-beta.renec.foundation:8001 \
     --entrypoint entrypoint3-mainnet-beta.renec.foundation:8001 \
-    --entrypoint entrypoint4-mainnet-beta.renec.foundation:8001 \
-    --entrypoint entrypoint5-mainnet-beta.renec.foundation:8001 \
-    --entrypoint entrypoint6-mainnet-beta.renec.foundation:8001 \
+    --entrypoint 52.21.244.146:8001 \
     --expected-genesis-hash 7PNFRHLxT9FcAxSUcg3P8BraJnnUBnjuy8LwRbRJvVkX \
     --incremental-snapshots \
-    --limit-ledger-size 50000000 \
-    --account-index program-id  --account-index spl-token-owner  --account-index spl-token-mint \
-    --enable-bigtable-ledger-upload --enable-rpc-bigtable-ledger-storage --rpc-bigtable-app-profile-id default --rpc-bigtable-instance-name solana-ledger \
-    --full-rpc-api"
+    --limit-ledger-size 50000000"
+    # --account-index program-id \
+    # --account-index spl-token-owner \
+    # --account-index spl-token-mint"
+    # --full-rpc-api \
 end
 
 def renec_log_rotate_config
@@ -238,18 +234,6 @@ def setup_log_rotate
 end
 
 def start_renec_validator
-  execute :sudo, "bash -c 'cat >/etc/sysctl.d/21-solana-validator.conf <<EOF
-  net.core.rmem_default = 134217728
-  net.core.rmem_max = 134217728
-  net.core.wmem_default = 134217728
-  net.core.wmem_max = 134217728
-
-  vm.max_map_count = 1000000
-
-  fs.nr_open = 1000000
-  EOF'"
-  execute :sudo, "sysctl -p /etc/sysctl.d/21-solana-validator.conf"
-
   execute :sudo, "systemctl stop renec.service"
   # dangerous command
   # execute "rm -rf #{fetch(:home_path)}/renec-cluster/ledger" if fetch(:is_devnet)
@@ -272,44 +256,6 @@ def create_renec_sys_tuner_service
   execute :sudo, "cp #{current_path}/renec-sys-tuner.service /etc/systemd/system/"
 end
 
-def node_exporter_service_definition
-  template_path = File.expand_path("../../../coin-service-conf/node-exporter.service.erb", __FILE__)
-  template = ERB.new(File.read(template_path))
-  template.result
-end
-
-def create_node_exporter_service
-  upload! StringIO.new(node_exporter_service_definition), "#{current_path}/node-exporter.service"
-  execute :sudo, "cp #{current_path}/node-exporter.service /etc/systemd/system/"
-  execute :sudo, "systemctl enable node-exporter.service"
-  execute :sudo, "systemctl restart node-exporter.service"
-end
-
-def prometheus_service_definition
-  template_path = File.expand_path("../../../coin-service-conf/prometheus.service.erb", __FILE__)
-  template = ERB.new(File.read(template_path))
-  template.result
-end
-
-def create_prometheus_service(node_name)
-  upload! StringIO.new(prometheus_config(node_name)), "#{current_path}/prometheus.yml"
-  execute "cp #{current_path}/prometheus.yml /home/ubuntu/prometheus/prometheus.yml"
-
-  upload! StringIO.new(prometheus_service_definition), "#{current_path}/prometheus.service"
-  execute :sudo, "cp #{current_path}/prometheus.service /etc/systemd/system/"
-  execute :sudo, "systemctl enable prometheus.service"
-  execute :sudo, "systemctl restart prometheus.service"
-end
-
-def prometheus_config(job_name)
-  template_path = File.expand_path("../../../coin-conf/prometheus.erb", __FILE__)
-  template = ERB.new(File.read(template_path))
-  namespace = OpenStruct.new(
-    job_name: job_name
-  )
-  template.result(namespace.instance_eval { binding })
-end
-
 def restart_renec_sys_tuner
   execute "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec config set --url mainnet-beta"
   execute "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec config set --url testnet" if fetch(:is_testnet)
@@ -318,4 +264,42 @@ def restart_renec_sys_tuner
   execute "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec address -k #{fetch(:home_path)}/renec-cluster/keypairs/validator-identity.json"
   execute :sudo, "systemctl enable renec-sys-tuner.service"
   execute :sudo, "systemctl restart renec-sys-tuner.service"
+end
+
+def start_renec_validator_custom
+  execute "echo Remi2023@ | sudo -S systemctl stop renec.service"
+  # dangerous command
+  # execute "rm -rf #{fetch(:home_path)}/renec-cluster/ledger" if fetch(:is_devnet)
+  execute "echo Remi2023@ | sudo -S systemctl enable renec.service"
+  execute "echo Remi2023@ | sudo -S systemctl restart renec.service"
+end
+
+def restart_renec_sys_tuner_custom
+  execute "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec config set --url mainnet-beta"
+  execute "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec config set --url testnet" if fetch(:is_testnet)
+  execute "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec config set --url devnet" if fetch(:is_devnet)
+  execute "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec config set --keypair #{fetch(:home_path)}/renec-cluster/keypairs/validator-identity.json"
+  execute "#{fetch(:home_path)}/.local/share/renec/install/active_release/bin/renec address -k #{fetch(:home_path)}/renec-cluster/keypairs/validator-identity.json"
+  # execute :sudo, "systemctl enable renec-sys-tuner.service"
+  # execute :sudo, "systemctl restart renec-sys-tuner.service"
+  execute "echo Remi2023@ | sudo -S systemctl enable renec-sys-tuner.service"
+  execute "echo Remi2023@ | sudo -S systemctl restart renec-sys-tuner.service"
+end
+
+def setup_log_rotate_custom
+  upload! StringIO.new(renec_log_rotate_config), "#{current_path}/log-rotate"
+  # execute :sudo, "cp #{current_path}/log-rotate /etc/logrotate.d/renec"
+  execute "echo Remi2023@ | sudo -S cp #{current_path}/log-rotate /etc/logrotate.d/renec"
+end
+
+def create_renec_sys_tuner_service_custom
+  upload! StringIO.new(renec_sys_tuner_service_definition), "#{current_path}/renec-sys-tuner.service"
+  # execute :sudo, "cp #{current_path}/renec-sys-tuner.service /etc/systemd/system/"
+  execute "echo Remi2023@ | sudo -S cp #{current_path}/renec-sys-tuner.service /etc/systemd/system/"
+end
+
+def create_renec_service_custom(hostname)
+  upload! StringIO.new(renec_service_definition(hostname)), "#{current_path}/renec.service"
+  # execute :sudo, "cp #{current_path}/renec.service /etc/systemd/system/"
+  execute "echo Remi2023@ | sudo -S cp #{current_path}/renec.service /etc/systemd/system/"
 end

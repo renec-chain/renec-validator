@@ -1,0 +1,10 @@
+<%= data_path %>/renec-validator-error.log {
+  daily
+  missingok
+  rotate 14
+  copytruncate
+  sharedscripts
+  postrotate
+    systemctl kill -s SIGUSR1 renec
+  endscript
+}

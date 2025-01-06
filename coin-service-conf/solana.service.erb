@@ -1,14 +1,15 @@
 [Unit]
-Description=Renec Sys Tuner Daemon
+Description=Solana Daemon
 After=network.target
 
 [Service]
-User=root
-Group=root
+User=ubuntu
+Group=ubuntu
 LimitNOFILE=1000000
+Environment=RUST_LOG=info
 ExecStart=<%= start_command %>
-StandardOutput=append:/home/ubuntu/renec-cluster/renec-sys-tuner.log
-StandardError=append:/home/ubuntu/renec-cluster/renec-sys-tuner-error.log
+StandardOutput=append:/home/ubuntu/solana-cluster/solana-validator.log
+StandardError=append:/home/ubuntu/solana-cluster/solana-validator-error.log
 Restart=on-failure
 
 # Specifies which signal to use when killing a service. Defaults to SIGTERM.

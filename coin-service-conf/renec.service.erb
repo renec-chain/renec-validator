@@ -5,7 +5,9 @@ After=network.target
 [Service]
 User=ubuntu
 Group=ubuntu
+LimitNOFILE=1000000
 Environment=SOLANA_METRICS_CONFIG=host=http://metrics.renec.foundation:8086,db=mainnet-beta,u=write,p=39018931781680558
+Environment=GOOGLE_APPLICATION_CREDENTIALS=/home/ubuntu/renec-foundation-ledger-writer.json
 Environment=RUST_LOG=info
 ExecStart=<%= start_command %>
 StandardOutput=append:/home/ubuntu/renec-cluster/renec-validator.log

@@ -2,10 +2,9 @@
   daily
   missingok
   rotate 14
-  notifempty
+  copytruncate
   sharedscripts
   postrotate
     systemctl kill -s SIGUSR1 renec
   endscript
 }
-

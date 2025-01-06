@@ -1,14 +1,13 @@
 [Unit]
-Description=Renec Sys Tuner Daemon
+Description=Prometheus
 After=network.target
 
 [Service]
 User=root
 Group=root
-LimitNOFILE=1000000
-ExecStart=<%= start_command %>
-StandardOutput=append:/home/ubuntu/renec-cluster/renec-sys-tuner.log
-StandardError=append:/home/ubuntu/renec-cluster/renec-sys-tuner-error.log
+ExecStart=/home/ubuntu/prometheus/prometheus --config.file=/home/ubuntu/prometheus/prometheus.yml
+StandardOutput=append:/home/ubuntu/prometheus/prometheus.log
+StandardError=append:/home/ubuntu/prometheus/prometheus-error.log
 Restart=on-failure
 
 # Specifies which signal to use when killing a service. Defaults to SIGTERM.
